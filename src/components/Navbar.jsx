@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <header style={{ padding: "20px", background: "green", color: "white" }}>
       <a href="#hero" className="logo">
-        GDS | GEKARI DAMAI SEJAHTERA
+        GDS | GEKARI DAMAI SEJAHTERA JAKARTA
       </a>
       <nav>
         <Link to="/" className="nav-link">
