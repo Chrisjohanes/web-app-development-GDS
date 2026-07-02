@@ -2,26 +2,28 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav>
-      <div className="logo">GDS Church</div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/schedule">Schedule</Link>
-        </li>
-        <li>
-          <Link to="/sermon">Sermon</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
-    </nav>
+    <header style={{ padding: "20px", background: "green", color: "white" }}>
+      <a href="#hero" className="logo">
+        GDS | GEKARI DAMAI SEJAHTERA
+      </a>
+      <nav>
+        <Link to="/" className="nav-link">
+          Beranda
+        </Link>
+        <Link to="/about" className="nav-link">
+          About
+        </Link>
+        <Link to="/schedule" className="nav-link">
+          Schedule
+        </Link>
+        <Link to="/sermon" className="nav-link">
+          Sermon
+        </Link>
+        <Link to="/contact" className="nav-link">
+          Contact
+        </Link>
+      </nav>
+    </header>
   );
 }
 
