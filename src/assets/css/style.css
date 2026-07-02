@@ -322,3 +322,134 @@ nav {
   border-radius: 20px;
   font-size: 0.8rem;
 }
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 768px) {
+  /* Navbar */
+  header {
+    padding: 16px !important;
+  }
+
+  .logo {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  /* Hero */
+  .hero-content {
+    padding: 28px 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Pastoral */
+  .pastoral {
+    padding: 40px 16px;
+  }
+
+  .pastoral h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Live Streaming */
+  .livestream {
+    padding: 40px 16px;
+  }
+
+  .livestream h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Schedule */
+  .schedule {
+    padding: 40px 16px;
+  }
+
+  .schedule h2 {
+    font-size: 1.4rem;
+  }
+
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* News */
+  .news {
+    padding: 40px 16px;
+  }
+
+  .news h2 {
+    font-size: 1.4rem;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sermon Preview */
+  .sermon-preview {
+    padding: 40px 16px;
+  }
+
+  .sermon-preview h2 {
+    font-size: 1.4rem;
+  }
+
+  .sermon-item {
+    padding: 16px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 16px !important;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 0.9rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.25rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  .schedule-card {
+    padding: 24px 16px;
+  }
+
+  .news-image-placeholder {
+    height: 130px;
+  }
+}
