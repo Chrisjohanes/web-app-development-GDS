@@ -453,3 +453,239 @@ nav {
     height: 130px;
   }
 }
+
+/* About Page */
+.about-section {
+  padding: 60px 20px;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-section h2 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+.about-history {
+  background: #fff;
+}
+
+.about-history p {
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.about-vision {
+  background: #f0f4f0;
+}
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.vision-card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.vision-card h3 {
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+.vision-card p {
+  color: #444;
+  line-height: 1.6;
+}
+
+.about-pastor {
+  background: #fff;
+}
+
+.about-pastor-flex {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.pastor-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pastor-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.pastor-info h2 {
+  text-align: left;
+}
+
+.pastor-info h3 {
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+.pastor-info p {
+  color: #444;
+  line-height: 1.7;
+}
+
+.about-location {
+  background: #1b5e20;
+  color: white;
+}
+
+.about-location h2 {
+  color: white;
+}
+
+.about-location p {
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 40px 16px;
+  }
+
+  .about-pastor-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pastor-info h2 {
+    text-align: center;
+  }
+
+  .pastor-photo {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Schedule Page */
+.schedule-page-header {
+  padding: 60px 20px 30px;
+  background: #1b5e20;
+  color: white;
+  text-align: center;
+}
+
+.schedule-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.schedule-page-header h1 {
+  margin-bottom: 12px;
+}
+
+.schedule-page-header p {
+  opacity: 0.9;
+}
+
+.schedule-page-list {
+  padding: 50px 20px;
+  background: #f7f7f5;
+}
+
+.schedule-detail-card {
+  display: flex;
+  gap: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  align-items: flex-start;
+}
+
+.schedule-detail-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.schedule-detail-content h2 {
+  color: #1b5e20;
+  margin-bottom: 8px;
+}
+
+.schedule-detail-desc {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.schedule-detail-sessions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.schedule-detail-sessions li {
+  color: #333;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.schedule-detail-mode {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.schedule-page-location {
+  padding: 50px 20px;
+  background: white;
+  text-align: center;
+}
+
+.schedule-page-location h2 {
+  color: #1b5e20;
+  margin-bottom: 12px;
+}
+
+.schedule-page-location p {
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .schedule-page-header {
+    padding: 40px 16px 24px;
+  }
+
+  .schedule-page-list,
+  .schedule-page-location {
+    padding: 30px 16px;
+  }
+
+  .schedule-detail-card {
+    flex-direction: column;
+    padding: 20px;
+  }
+}
