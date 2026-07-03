@@ -1,7 +1,7 @@
 const scheduleData = [
   {
     title: "Anak",
-    time: "Minggu, 09.00 & 14.00 WIB",
+    time: "Minggu, 09.00 & 13.00 WIB",
     mode: "Onsite",
     icon: "🧒",
   },
@@ -13,7 +13,7 @@ const scheduleData = [
   },
   {
     title: "Dewasa",
-    time: "Minggu, 09.00 & 14.00 WIB",
+    time: "Minggu, 09.00 & 13.00 WIB",
     mode: "Onsite & Online",
     icon: "🙏",
   },

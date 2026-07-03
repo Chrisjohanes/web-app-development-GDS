@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Schedule from "./pages/Schedule";
 import Sermon from "./pages/Sermon";
 import Contact from "./pages/Contact";
+import NewsList from "./pages/NewsList";
+import NewsDetail from "./pages/NewsDetail";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sermon" element={<Sermon />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/news" element={<NewsList />} />
+        <Route path="/news/:id" element={<NewsDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>
