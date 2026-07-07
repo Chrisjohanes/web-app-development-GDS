@@ -8,21 +8,79 @@ import Sermon from "./pages/Sermon";
 import Contact from "./pages/Contact";
 import NewsList from "./pages/NewsList";
 import NewsDetail from "./pages/NewsDetail";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminNewsForm from "./pages/AdminNewsForm";
+import AdminSermonForm from "./pages/AdminSermonForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/sermon" element={<Sermon />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/news" element={<NewsList />} />
-        <Route path="/news/:id" element={<NewsDetail />} />
+        {/* Halaman admin TIDAK pakai Navbar/Footer publik */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/news/new"
+          element={
+            <ProtectedRoute>
+              <AdminNewsForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/news/edit/:id"
+          element={
+            <ProtectedRoute>
+              <AdminNewsForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/sermon/new"
+          element={
+            <ProtectedRoute>
+              <AdminSermonForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/sermon/edit/:id"
+          element={
+            <ProtectedRoute>
+              <AdminSermonForm />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Halaman publik, pakai Navbar/Footer */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/schedule" element={<Schedule />} />
+                <Route path="/sermon" element={<Sermon />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/news" element={<NewsList />} />
+                <Route path="/news/:id" element={<NewsDetail />} />
+              </Routes>
+              <Footer />
+            </>
+          }
+        />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }
