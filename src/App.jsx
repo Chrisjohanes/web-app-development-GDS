@@ -12,6 +12,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminNewsForm from "./pages/AdminNewsForm";
 import AdminSermonForm from "./pages/AdminSermonForm";
+import AdminScheduleForm from "./pages/AdminScheduleForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -57,6 +58,22 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminSermonForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/schedule/new"
+          element={
+            <ProtectedRoute>
+              <AdminScheduleForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/schedule/edit/:id"
+          element={
+            <ProtectedRoute>
+              <AdminScheduleForm />
             </ProtectedRoute>
           }
         />

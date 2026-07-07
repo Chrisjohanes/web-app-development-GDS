@@ -5,6 +5,8 @@ const cors = require("cors");
 const authRoutes = require("./routes/auth.routes");
 const newsRoutes = require("./routes/news.routes");
 const sermonRoutes = require("./routes/sermon.routes");
+const contactRoutes = require("./routes/contact.routes");
+const scheduleRoutes = require("./routes/schedule.routes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,6 +22,8 @@ app.get("/api/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/sermons", sermonRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/schedule", scheduleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);

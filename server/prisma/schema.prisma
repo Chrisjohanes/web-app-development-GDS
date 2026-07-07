@@ -35,3 +35,23 @@ model Sermon {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ScheduleItem {
+  id          Int      @id @default(autoincrement())
+  title       String
+  icon        String
+  sessions    String   @db.Text
+  mode        String
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

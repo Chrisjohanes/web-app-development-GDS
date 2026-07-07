@@ -1,28 +1,28 @@
-const scheduleData = [
-  {
-    title: "Ibadah Anak",
-    icon: "🧒",
-    sessions: ["Minggu, 09.00 WIB", "Minggu, 13.00 WIB"],
-    mode: "Onsite",
-    desc: "Ibadah khusus untuk anak-anak dengan pujian, cerita Alkitab, dan aktivitas yang menyenangkan.",
-  },
-  {
-    title: "Ibadah Youth",
-    icon: "🧒",
-    sessions: ["Sabtu, 17.00 WIB"],
-    mode: "Onsite",
-    desc: "Ibadah untuk remaja & anak muda, penuh semangat dengan pujian dan pengajaran firman yang relevan.",
-  },
-  {
-    title: "Ibadah Dewasa",
-    icon: "🙏",
-    sessions: ["Minggu, 09.00 WIB", "Minggu, 13.00 WIB"],
-    mode: "Onsite & Online",
-    desc: "Ibadah umum untuk seluruh jemaat dewasa, tersedia juga live streaming bagi yang berhalangan hadir.",
-  },
-];
+import { useState, useEffect } from "react";
+
+const API_URL = "http://localhost:5000/api";
 
 function Schedule() {
+  const [scheduleData, setScheduleData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`${API_URL}/schedule`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Gagal mengambil data jadwal");
+        return res.json();
+      })
+      .then((data) => {
+        setScheduleData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="schedule-page">
       <section className="schedule-page-header">
@@ -37,21 +37,33 @@ function Schedule() {
 
       <section className="schedule-page-list">
         <div className="schedule-page-container">
-          {scheduleData.map((item, index) => (
-            <div className="schedule-detail-card" key={index}>
-              <div className="schedule-detail-icon">{item.icon}</div>
-              <div className="schedule-detail-content">
-                <h2>{item.title}</h2>
-                <p className="schedule-detail-desc">{item.desc}</p>
-                <ul className="schedule-detail-sessions">
-                  {item.sessions.map((session, i) => (
-                    <li key={i}>{session}</li>
-                  ))}
-                </ul>
-                <span className="schedule-detail-mode">{item.mode}</span>
-              </div>
-            </div>
-          ))}
+          {loading && <p style={{ textAlign: "center" }}>Memuat jadwal...</p>}
+          {error && (
+            <p style={{ textAlign: "center", color: "red" }}>
+              Gagal memuat jadwal: {error}
+            </p>
+          )}
+
+          {!loading &&
+            !error &&
+            scheduleData.map((item) => {
+              const sessions = item.sessions.split(";").map((s) => s.trim());
+              return (
+                <div className="schedule-detail-card" key={item.id}>
+                  <div className="schedule-detail-icon">{item.icon}</div>
+                  <div className="schedule-detail-content">
+                    <h2>{item.title}</h2>
+                    <p className="schedule-detail-desc">{item.description}</p>
+                    <ul className="schedule-detail-sessions">
+                      {sessions.map((session, i) => (
+                        <li key={i}>{session}</li>
+                      ))}
+                    </ul>
+                    <span className="schedule-detail-mode">{item.mode}</span>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </section>
 

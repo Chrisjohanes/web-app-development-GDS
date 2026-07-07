@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = "http://localhost:5000/api";
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -7,18 +9,39 @@ function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Sementara hanya tampilkan pesan sukses di UI.
-    // Nanti bisa dihubungkan ke backend/email service (misal EmailJS, Formspree, dsb).
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+    setError("");
+    setSubmitted(false);
+
+    try {
+      const res = await fetch(`${API_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Gagal mengirim pesan");
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,7 +59,6 @@ function Contact() {
 
       <section className="contact-page-body">
         <div className="contact-page-container contact-grid">
-          {/* Form */}
           <div className="contact-form-wrapper">
             <h2>Kirim Pesan</h2>
             {submitted && (
@@ -44,6 +66,7 @@ function Contact() {
                 Terima kasih! Pesan Anda telah terkirim.
               </p>
             )}
+            {error && <p className="admin-login-error">{error}</p>}
             <form onSubmit={handleSubmit} className="contact-form">
               <label>
                 Nama
@@ -75,13 +98,12 @@ function Contact() {
                   required
                 ></textarea>
               </label>
-              <button type="submit" className="btn-primary">
-                Kirim Pesan
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? "Mengirim..." : "Kirim Pesan"}
               </button>
             </form>
           </div>
 
-          {/* Info */}
           <div className="contact-info-wrapper">
             <h2>Informasi Kontak</h2>
             <div className="contact-info-item">
