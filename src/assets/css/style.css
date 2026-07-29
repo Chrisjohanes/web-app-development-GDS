@@ -1,0 +1,1696 @@
+:root {
+  --green-dark: #0b4f2c;
+  --green-accent: #4caf50;
+  --green-pastel: #c8e6c9;
+  --white: #ffffff;
+  --gray-light: #f5f5f5;
+  --text-dark: #2e2e2e;
+  --border: #e0f2e9;
+  --green-dark-hover: #093d22;
+  --green-accent-hover: #43a047;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.3;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  color: #666;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title .title-line {
+  width: 60px;
+  height: 4px;
+  background: var(--green-accent);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--green-accent);
+  color: var(--white);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--green-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  background: var(--white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--green-dark);
+  line-height: 1.2;
+}
+
+.logo-text span {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--green-accent);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: all 0.3s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-menu a:hover {
+  background: var(--green-pastel);
+  color: var(--green-dark);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--green-dark);
+  cursor: pointer;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.header-socials {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+
+.header-socials a {
+  color: var(--green-dark);
+  font-size: 18px;
+  transition:
+    color 0.3s,
+    opacity 0.3s;
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.header-socials a:hover {
+  color: var(--green-accent);
+  opacity: 1;
+}
+
+/* ==================== HERO CAROUSEL (tinggi dinamis via JS) ==================== */
+.hero {
+  margin-top: 76px;
+  position: relative;
+  overflow: hidden;
+  background: var(--green-dark);
+}
+
+.carousel {
+  position: relative;
+  transition: height 0.4s ease;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+  pointer-events: auto;
+  position: relative;
+}
+
+.slide-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--white);
+}
+
+.slide-content h2 {
+  font-size: clamp(24px, 5vw, 42px);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.slide-content h2 em {
+  font-style: italic;
+  color: var(--green-pastel);
+}
+
+.slide-quote {
+  font-size: clamp(14px, 2.5vw, 17px);
+  line-height: 1.8;
+  margin: 0 auto 30px;
+  opacity: 0.95;
+  max-width: 700px;
+}
+
+.slide-speaker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.speaker-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--green-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--white);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.speaker-info {
+  text-align: left;
+}
+
+.speaker-info strong {
+  display: block;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+
+.speaker-info span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.carousel-dot.active {
+  background: var(--white);
+  transform: scale(1.2);
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.carousel-prev {
+  left: 16px;
+}
+.carousel-next {
+  right: 16px;
+}
+
+/* ==================== TEMA GEKARI (Home - dulu Pastoral/Sambutan) ==================== */
+.theme-section {
+  padding: 60px 20px;
+  background: #f7f7f5;
+  text-align: center;
+}
+
+.theme-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.theme-eyebrow {
+  color: var(--green-accent);
+  font-weight: 700;
+  letter-spacing: 4px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.theme-section h2 {
+  color: var(--green-dark);
+  font-size: clamp(22px, 3.5vw, 30px);
+  margin-bottom: 20px;
+}
+
+.theme-intro {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.theme-more-link {
+  color: var(--green-accent-hover);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.theme-more-link:hover {
+  text-decoration: underline;
+}
+
+.theme-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.theme-photo-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.theme-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.theme-photo-item:hover img {
+  transform: scale(1.06);
+}
+
+.theme-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 24px 12px 12px;
+  text-align: left;
+}
+
+/* ==================== LIVE STREAMING ==================== */
+.livestream {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.livestream-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.livestream h2 {
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+
+.livestream p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==================== SCHEDULE (Home preview) ==================== */
+.schedule {
+  padding: 60px 20px;
+  background: #f0f4f0;
+  text-align: center;
+}
+
+.schedule-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.schedule h2 {
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+
+.schedule > .schedule-container > p {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.schedule-card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.schedule-card:hover {
+  transform: translateY(-4px);
+}
+
+.schedule-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.schedule-card h3 {
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.schedule-time {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.schedule-mode {
+  display: inline-block;
+  background: var(--green-pastel);
+  color: var(--green-dark);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* ==================== NEWS (Home) ==================== */
+.news {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.news-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.news-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.news-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.news-content {
+  padding: 20px;
+}
+
+.news-date {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.news-content h3 {
+  color: var(--green-dark);
+  margin: 8px 0;
+}
+
+.news-content p {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==================== SERMON PREVIEW (Home) ==================== */
+.sermon-preview {
+  padding: 60px 20px;
+  background: #f7f7f5;
+  text-align: center;
+}
+
+.sermon-preview-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sermon-preview h2 {
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+
+.sermon-preview > .sermon-preview-container > p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.sermon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.sermon-item {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid var(--green-accent-hover);
+}
+
+.sermon-item h3 {
+  color: var(--green-dark);
+  margin-bottom: 6px;
+}
+
+.sermon-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.sermon-verse {
+  display: inline-block;
+  background: var(--green-pastel);
+  color: var(--green-accent-hover);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* ==================== ABOUT PAGE ==================== */
+.about-page {
+  min-height: 100vh;
+}
+
+.about-section-main {
+  padding: 100px 20px 60px;
+  background: var(--white);
+}
+
+.about-subnav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 50px;
+}
+
+.about-nav-btn {
+  padding: 10px 24px;
+  background: var(--white);
+  color: var(--green-dark);
+  border: 2px solid var(--green-dark);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.about-nav-btn.active {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.about-panel {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-story,
+.visi-misi-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-story-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about-story-header i {
+  font-size: 40px;
+  color: var(--green-accent);
+  margin-bottom: 12px;
+}
+
+.about-story-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.about-story-header p {
+  font-size: 14px;
+  color: #888;
+}
+
+.about-story-box {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: left;
+}
+
+.about-story-box p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.verse {
+  background: var(--green-pastel);
+  border-left: 4px solid var(--green-accent);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--green-dark);
+}
+
+.visi-misi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.visi-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: all 0.3s;
+}
+
+.visi-card:hover {
+  border-color: var(--green-accent);
+  box-shadow: 0 8px 30px rgba(76, 175, 80, 0.12);
+  transform: translateY(-4px);
+}
+
+.visi-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 12px;
+}
+
+/* Pastoral Team (Tim Gembala - halaman About, BEDA dengan Tema Gekari di Home) */
+.pastoral-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pastoral-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.pastoral-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.pastoral-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--green-pastel);
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border: 4px solid var(--border);
+}
+
+.pastoral-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pastoral-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+}
+
+.pastoral-role {
+  font-size: 13px;
+  color: var(--green-accent);
+  font-weight: 600;
+}
+
+/* Modal (Sejarah Lengkap) */
+.news-modal-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.news-modal {
+  background: var(--white);
+  border-radius: 20px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.news-modal-header {
+  position: relative;
+  padding: 32px 32px 0;
+}
+
+.news-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gray-light);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.news-modal-close:hover {
+  background: #e0e0e0;
+  transform: rotate(90deg);
+}
+
+.news-modal-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: var(--green-pastel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--green-dark);
+  margin-bottom: 20px;
+}
+
+.news-modal-date {
+  display: inline-block;
+  background: var(--green-pastel);
+  color: var(--green-dark);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.news-modal-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-dark);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.news-modal-body {
+  padding: 24px 32px 32px;
+}
+
+.news-modal-body p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.modal-highlight-box {
+  background: rgba(76, 175, 80, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.modal-highlight-box i {
+  color: var(--green-accent);
+  font-size: 28px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.modal-highlight-box p {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+/* ==================== SCHEDULE PAGE (detail /schedule) ==================== */
+.schedule-page-header {
+  padding: 60px 20px 30px;
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+}
+
+.schedule-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.schedule-page-header h1 {
+  margin-bottom: 12px;
+}
+
+.schedule-page-header p {
+  opacity: 0.9;
+}
+
+.schedule-page-list {
+  padding: 50px 20px;
+  background: #f7f7f5;
+}
+
+.schedule-detail-card {
+  display: flex;
+  gap: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  align-items: flex-start;
+}
+
+.schedule-detail-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.schedule-detail-content h2 {
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.schedule-detail-desc {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.schedule-detail-sessions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.schedule-detail-sessions li {
+  color: #333;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.schedule-detail-mode {
+  display: inline-block;
+  background: var(--green-pastel);
+  color: var(--green-dark);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.schedule-page-location {
+  padding: 50px 20px;
+  background: white;
+  text-align: center;
+}
+
+.schedule-page-location h2 {
+  color: var(--green-dark);
+  margin-bottom: 12px;
+}
+
+.schedule-page-location p {
+  color: #333;
+  line-height: 1.8;
+}
+
+/* ==================== SERMON PAGE (detail /sermon) ==================== */
+.sermon-page-header {
+  padding: 60px 20px 30px;
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+}
+
+.sermon-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sermon-page-header h1 {
+  margin-bottom: 12px;
+}
+
+.sermon-page-header p {
+  opacity: 0.9;
+}
+
+.sermon-page-list {
+  padding: 50px 20px;
+  background: #f7f7f5;
+}
+
+.sermon-detail-card {
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--green-accent-hover);
+}
+
+.sermon-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.sermon-detail-header h2 {
+  color: var(--green-dark);
+  margin: 0;
+}
+
+.sermon-detail-verse {
+  display: inline-block;
+  background: var(--green-pastel);
+  color: var(--green-accent-hover);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sermon-detail-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.sermon-detail-summary {
+  color: #444;
+  line-height: 1.7;
+}
+
+/* ==================== CONTACT PAGE ==================== */
+.contact-page-header {
+  padding: 60px 20px 30px;
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+}
+
+.contact-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-page-header h1 {
+  margin-bottom: 12px;
+}
+
+.contact-page-header p {
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-page-body {
+  padding: 50px 20px;
+  background: #f7f7f5;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+}
+
+.contact-form-wrapper,
+.contact-info-wrapper {
+  background: white;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-wrapper h2,
+.contact-info-wrapper h2 {
+  color: var(--green-dark);
+  margin-bottom: 20px;
+}
+
+.contact-success {
+  background: var(--green-pastel);
+  color: var(--green-accent-hover);
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green-accent-hover);
+}
+
+.contact-form button {
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.contact-info-item {
+  margin-bottom: 20px;
+}
+
+.contact-info-item strong {
+  display: block;
+  color: var(--green-accent-hover);
+  margin-bottom: 6px;
+}
+
+.contact-info-item p {
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ==================== NEWS LIST & DETAIL PAGES ==================== */
+.news-page-header {
+  padding: 100px 20px 40px;
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+}
+
+.news-page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.news-page-header h1 {
+  margin-bottom: 12px;
+}
+
+.news-page-header p {
+  opacity: 0.9;
+}
+
+.news-page-list {
+  padding: 50px 20px;
+  background: #f7f7f5;
+}
+
+.news-detail-hero {
+  margin-top: 76px;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  background: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-detail-image {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  display: block;
+}
+
+.news-detail-body {
+  padding: 50px 20px;
+  background: white;
+}
+
+.news-detail-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.news-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--green-accent-hover);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.news-detail-back:hover {
+  text-decoration: underline;
+}
+
+.news-detail-container .news-date {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.news-detail-container h1 {
+  color: var(--green-dark);
+  font-size: clamp(22px, 4vw, 32px);
+  margin: 12px 0 24px;
+}
+
+.news-detail-container p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+/* ==================== RESPONSIVE (konsolidasi) ==================== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 76px;
+    left: -100%;
+    width: 100%;
+    background: var(--white);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    transition: left 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.open {
+    left: 0;
+  }
+
+  .nav-menu a {
+    padding: 12px;
+    text-align: center;
+    display: block;
+  }
+
+  .header-socials {
+    display: none;
+  }
+
+  .carousel-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .carousel-prev {
+    left: 8px;
+  }
+  .carousel-next {
+    right: 8px;
+  }
+
+  .theme-section,
+  .livestream,
+  .schedule,
+  .news,
+  .sermon-preview {
+    padding: 40px 16px;
+  }
+
+  .theme-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-grid,
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section-main {
+    padding: 90px 16px 40px;
+  }
+
+  .pastoral-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .schedule-page-header,
+  .sermon-page-header,
+  .contact-page-header,
+  .news-page-header {
+    padding: 40px 16px 24px;
+  }
+
+  .schedule-page-list,
+  .schedule-page-location,
+  .sermon-page-list,
+  .contact-page-body,
+  .news-page-list {
+    padding: 30px 16px;
+  }
+
+  .schedule-detail-card,
+  .sermon-detail-card {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .sermon-detail-header {
+    flex-direction: column;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-wrapper,
+  .contact-info-wrapper {
+    padding: 24px;
+  }
+
+  .news-detail-hero {
+    margin-top: 70px;
+    max-height: 280px;
+  }
+
+  .news-detail-image {
+    height: 280px;
+  }
+
+  .news-detail-body {
+    padding: 30px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pastoral-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-primary {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}
+
+/* ==================== ADMIN PANEL ==================== */
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-dark);
+  padding: 20px;
+}
+
+.admin-login-box {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.admin-login-box h1 {
+  color: var(--green-dark);
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.admin-login-box p {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.admin-login-error {
+  background: #fdecea;
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-login-form label,
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.admin-login-form input,
+.admin-form input,
+.admin-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.admin-login-form input:focus,
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: var(--green-accent);
+}
+
+.admin-login-form button,
+.admin-form button {
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* Dashboard */
+.admin-dashboard {
+  min-height: 100vh;
+  background: #f4f6f5;
+  padding: 24px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-header h1 {
+  color: var(--green-dark);
+  font-size: 22px;
+}
+
+.admin-logout-btn {
+  background: #fdecea;
+  color: #c0392b;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admin-logout-btn:hover {
+  background: #f8d3ce;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.admin-tab-btn {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.admin-tab-btn.active {
+  background: var(--green-dark);
+  color: white;
+  border-color: var(--green-dark);
+}
+
+.admin-loading {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+}
+
+.admin-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.admin-panel-toolbar {
+  margin-bottom: 16px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--border);
+  color: var(--green-dark);
+  font-size: 13px;
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-edit-btn {
+  background: var(--green-pastel);
+  color: var(--green-dark);
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-delete-btn {
+  background: #fdecea;
+  color: #c0392b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Form Tambah/Edit */
+.admin-form-page {
+  min-height: 100vh;
+  background: #f4f6f5;
+  padding: 24px;
+}
+
+.admin-form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.admin-back-link {
+  display: inline-block;
+  color: var(--green-accent-hover);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.admin-form-container h1 {
+  color: var(--green-dark);
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .admin-dashboard,
+  .admin-form-page {
+    padding: 16px;
+  }
+
+  .admin-form-container {
+    padding: 20px;
+  }
+}
